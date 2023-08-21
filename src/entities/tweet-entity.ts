@@ -1,19 +1,17 @@
-import { User } from "./user-entity";
-
 export class Tweet {
-    private username: string;
-    private tweet: string;
+  private username: string;
+  private tweet: string;
 
-    constructor(username:string, tweet: string){
-        this.username = username;
-        this.tweet = tweet;
-    }
+  constructor(username: string, tweet: string) {
+    this.username = username;
+    this.tweet = tweet;
+  }
 
-    getUsername(){
-        return this.username;
-    }
+  getUsername() {
+    return this.username;
+  }
 
-    gettweet(){
-        return this.tweet;
-    }
+  gettweet() {
+    return this.tweet;
+  }
 }

@@ -12,7 +12,6 @@ import {
 import { AppService } from './app.service';
 import { UserDto } from './dtos/user-dtos';
 import { TweetDto } from './dtos/tweet-dtos';
-import { get } from 'http';
 
 @Controller()
 export class AppController {
@@ -75,7 +74,7 @@ export class AppController {
 
   // tweets by username
   @Get('/tweets/:username')
-  getTweetsByUsername(@Param('username') username: string){
+  getTweetsByUsername(@Param('username') username: string) {
     try {
       return this.appService.getTweetsByUsername(username);
     } catch (error) {
