@@ -7,7 +7,7 @@ import { TweetDto } from './dtos/tweet-dtos';
 @Injectable()
 export class AppService {
   getHello(): string {
-    return 'Hello World!';
+    return "I'm okay!";
   }
 
   private users: User[];
@@ -18,6 +18,7 @@ export class AppService {
     this.tweets = [];
   }
 
+  //users related
   postUser(body: UserDto) {
     const newUser = new User(body.username, body.avatar);
     return this.users.push(newUser);
@@ -27,6 +28,7 @@ export class AppService {
     return this.users;
   }
 
+  // tweets related
   postTweet(body: TweetDto) {
     // check if user is a valid one
     const checkUser = this.users.find(
@@ -63,15 +65,16 @@ export class AppService {
   }
 
   getTweetsByUsername(username: string) {
-    const sortedTweets = this.tweets.filter(
-      (tweet) => tweet.getUsername() === username,
-    );
-    sortedTweets.map((tweet) => {
-      const includesAvatar = this.users.find(user => user.getUsername() === tweet.getUsername());
-      return {...tweet, avatar: includesAvatar.getAvatar()};
-    });
+    const sortedTweets = this.tweets
+      .filter((tweet) => tweet.getUsername() === username)
+      .map((tweet) => {
+        const includesAvatar = this.users.find(
+          (user) => user.getUsername() === tweet.getUsername(),
+        );
+        return { ...tweet, avatar: includesAvatar.getAvatar() };
+      });
 
-    if(!sortedTweets) return [];
+    if (!sortedTweets) return [];
 
     return sortedTweets;
   }

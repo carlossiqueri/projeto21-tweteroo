@@ -7,6 +7,6 @@ export class UserDto {
 
   @IsNotEmpty()
   @IsString()
-  @IsUrl({},  {message: 'Required fields cannot be empty!'})
+  @IsUrl({},  {message: 'All fields are required!'})
   avatar: string;
 }
